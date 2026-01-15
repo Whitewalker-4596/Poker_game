@@ -2,6 +2,20 @@ class Card():
     SUITS = ("Hearts","Clubs","Spades","Diamonds")
     RANKS = ("2","3","4","5","6","7","8","9","10",
             "Jack","Queen","King","Ace")
+    @classmethod
+    def create_standred_52_cards(cls):
+        cards = []
+        return [
+            Card(rank = rank,suit = suit)
+            for suit in cls.SUITS
+            for rank in cls.RANKS
+        ]
+        # for suit in cls.SUITS:
+        #     for rank in cls.RANKS:
+        #         # cards.append(1)
+        #         cards.append(Card(suit = suit,rank = rank))
+        # return cards
+
     def __init__(self,rank,suit):
         if rank not in self.RANKS:
             raise ValueError(f"Invalid rank.The rank must be one of : {self.RANKS}")
@@ -14,5 +28,6 @@ class Card():
         return f"{self.rank} of {self.suit}"
     def __repr__(self):
         return f"Card(rank = '{self.rank}', suit = '{self.suit}')"
-
+    def __eq__(self,another_card):
+        return (self.rank == another_card.rank) and (self.suit == another_card.suit)
 

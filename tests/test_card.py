@@ -31,6 +31,25 @@ class CardTest(unittest.TestCase):
     def test_incorrect_suit_name(self):
         with self.assertRaises(ValueError):
             Card(rank = "4", suit = "Dots")
+    def test_can_create_standred_52_cards(self):
+        cards = Card.create_standred_52_cards()
+        self.assertEqual(len(cards),52)
+        self.assertEqual(cards[0],
+        Card("2","Hearts"))
+        self.assertEqual(cards[-1],
+        Card("Ace","Diamonds"))
+    def test_figuers_if_two_cards_are_equal(self):
+        self.assertEqual(
+            Card(rank = "2",suit = "Hearts"),
+            Card(rank = "2",suit = "Hearts")
+            )
+    def test_created_cards_are_real_cards(self):
+        cards = Card.create_standred_52_cards()
+        for card in cards:
+            self.assertIsInstance(card,Card)
+        
+
+
 
 
 

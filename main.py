@@ -1,5 +1,11 @@
 from poker.card import Card
-card1 = Card("King","Hearts")
-card2 = Card("6","Diamonds")
+from poker.deck import Deck
 
-# from main import card1,card2
+deck = Deck()
+cards = Card.create_standred_52_cards()
+deck.add_cards(cards)
+
+# card1 = Card("King","Hearts")
+# card2 = Card("6","Diamonds")
+
+# from main import deck ,cards
