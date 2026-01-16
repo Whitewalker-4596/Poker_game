@@ -48,15 +48,25 @@ class TestHand(unittest.TestCase):
         self.assertEqual(
             hand.best_rank(),"Three of a Kind"
         )
+     
     def test_straight_is_best_rank(self):
         cards = [
+            Card("5","Hearts"),
             Card("6", "Hearts"),
             Card("2", "Spades"),
             Card("4", "Diamonds"),
             Card("3", "Clubs"),
-            Card("5", "Diamonds")
+            Card("5", "Diamonds"),
+            Card("King","Hearts")
         ]
         hand = Hand(cards = cards)
         self.assertEqual(
             hand.best_rank(),"Straight"
         )
+    def test_flush_is_best_rank(self):
+        cards = [
+            Card(rank = rank,suit = "Hearts")
+            for rank in ["2","King","4","Jack","Ace"]
+        ]
+        hand = Hand(cards = cards)
+        self.assertEqual(hand.best_rank(),"Flush")

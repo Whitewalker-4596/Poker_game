@@ -2,7 +2,10 @@
 class Hand():
 
     def __init__(self,cards):
-        self.cards = cards
+        copy = cards[:] #sorting without mutating recieved list
+        copy.sort()
+        self.cards = copy
+        
         self._rank_validations_from_best_to_worst = (
         ("Straight",self._straight),
         ("Three of a Kind",self._three_of_a_kind),
@@ -33,6 +36,32 @@ class Hand():
             name,validator_func = rank
             if validator_func():
                 return name
+    def _straight(self):
+        rank_indexes = list(set([card.rank_index for card in self.cards]))
+        for i in range(len(rank_indexes)-4):
+            is_straight = rank_indexes[i] + 4 == rank_indexes[i+4]
+            if is_straight:
+                return True
+            else:
+                continue
+        return False
+
+        # rank_indexes = list(set([card.rank_index for card in self.cards]))
+        # rank_indexes.sort()
+        # count = 0
+        # for index,rank_index in enumerate(rank_indexes[:-1]):
+            
+        #     if rank_index + 1 == rank_indexes[index+1]:
+        #         if count >=4:
+        #             return count
+        #         count +=1
+        #     else :
+        #         if count >=4:
+        #             return count
+        #         count = 0
+        # if count >= 4:
+        #     return True
+        # return False
 
     def _three_of_a_kind(self):
         return self._count_rank_groups(group_size = 3) == 1

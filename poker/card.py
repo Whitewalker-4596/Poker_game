@@ -16,13 +16,16 @@ class Card():
             raise ValueError(f"Invalid rank.The rank must be one of : {self.RANKS}")
         if suit not in self.SUITS:
             raise ValueError(f"Invalid suit.The suit must be one of : {self.SUITS}")
-        
         self.rank = rank
         self.suit = suit
+        self.rank_index = self.RANKS.index(self.rank)
+
     def __str__(self):
         return f"{self.rank} of {self.suit}"
     def __repr__(self):
         return f"Card(rank = '{self.rank}', suit = '{self.suit}')"
     def __eq__(self,another_card):
         return (self.rank == another_card.rank) and (self.suit == another_card.suit)
-
+    def __gt__(self,another_card):
+        # return self.RANKS.index(self.rank) > self.RANKS.index(another_card.rank)
+        return self.rank_index > another_card.rank_index

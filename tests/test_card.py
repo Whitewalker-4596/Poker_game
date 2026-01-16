@@ -7,6 +7,9 @@ class CardTest(unittest.TestCase):
     def test_has_suit(self):
         card = Card(rank = "3",suit = "Clubs")
         self.assertEqual(card.suit,"Clubs")
+    def test_knows_ranks_index(self):
+        card = Card(rank = "Jack",suit = "Hearts")
+        self.assertEqual(card.rank_index , 9)
     def test_has_str_representation_with_rank_and_suit(self):
         card = Card(rank = "Ace",suit = "Spades")
         self.assertEqual(str(card), "Ace of Spades")
@@ -47,6 +50,28 @@ class CardTest(unittest.TestCase):
         cards = Card.create_standred_52_cards()
         for card in cards:
             self.assertIsInstance(card,Card)
+    def test_can_say_which_card_is_higher(self):
+        self.assertEqual(
+            Card(rank = "Ace",suit = "Clubs") > 
+            Card(rank = "2",suit = "Hearts"),True
+            )
+    def test_can_sort_my_given_cards(self):
+        cards = [
+            Card("King", "Hearts"),
+            Card("2", "Spades"),
+            Card("Jack", "Diamonds"),
+            Card("6", "Clubs"),
+            Card("10", "Diamonds")
+        ]
+        cards.sort()
+        self.assertEqual(cards,[
+            Card("2", "Spades"),
+            Card("6", "Clubs"),
+            Card("10", "Diamonds"),
+            Card("Jack", "Diamonds"),
+            Card("King", "Hearts")
+        ]
+        )
         
 
 
