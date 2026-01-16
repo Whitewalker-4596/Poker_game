@@ -10,11 +10,6 @@ class Card():
             for suit in cls.SUITS
             for rank in cls.RANKS
         ]
-        # for suit in cls.SUITS:
-        #     for rank in cls.RANKS:
-        #         # cards.append(1)
-        #         cards.append(Card(suit = suit,rank = rank))
-        # return cards
 
     def __init__(self,rank,suit):
         if rank not in self.RANKS:
