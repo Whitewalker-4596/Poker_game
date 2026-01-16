@@ -50,3 +50,21 @@ if __name__ == "__main__":
         # elif self._count_rank_groups(group_size = 2) == 1:
         #     return "Pair"
         # return "High Card" 
+
+        #from straight function
+                # rank_indexes = list(set([card.rank_index for card in self.cards]))
+        # rank_indexes.sort()
+        # count = 0
+        # for index,rank_index in enumerate(rank_indexes[:-1]):
+            
+        #     if rank_index + 1 == rank_indexes[index+1]:
+        #         if count >=4:
+        #             return count
+        #         count +=1
+        #     else :
+        #         if count >=4:
+        #             return count
+        #         count = 0
+        # if count >= 4:
+        #     return True
+        # return False
