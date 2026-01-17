@@ -1,11 +1,17 @@
 from poker.card import Card
 from poker.deck import Deck
-
+from poker.hand import Hand
+from poker.player import Player
 deck = Deck()
 cards = Card.create_standred_52_cards()
 deck.add_cards(cards)
 
+hand1 = Hand(cards = [])
+hand2 = Hand(cards = [])
+player1 = Player(name = "manu", hand = hand1)
+player2 = Player(name = "bathukoli", hand = hand2)
+
 # card1 = Card("King","Hearts")
 # card2 = Card("6","Diamonds")
 
-# from main import deck ,cards
+# from main import deck ,cards, hand1, hand2, player1, player2

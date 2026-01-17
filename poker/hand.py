@@ -7,6 +7,7 @@ class Hand():
         self.cards = copy
         
         self._rank_validations_from_best_to_worst = (
+        ("Royal Flush",self._royalflush),
         ("Straight Flush",self._straightflush),
         ("Four of a Kind",self._fourofakind),
         ("Full House",self._fullhouse),
@@ -15,7 +16,8 @@ class Hand():
         ("Three of a Kind",self._three_of_a_kind),
         ("Two Pair",self._two_pair),
         ("Pair",self._pair),
-        ("High Card",self._high_Card)
+        ("High Card",self._high_Card),
+        ("Empty Hand",self._emptyhand)
         )
 
     @property
@@ -65,6 +67,8 @@ class Hand():
                 return name
     def _royalflush(self):
         is_straight_flush = self._straightflush()
+        if not is_straight_flush:
+            return False
         is_royal = self.cards[-1].rank == "Ace"
         return is_straight_flush and is_royal
             
@@ -101,7 +105,11 @@ class Hand():
         return self._count_rank_groups(group_size = 2) == 1
             
     def _high_Card(self):
-        return True
+        return len(self.cards) >= 2
+
+    def _emptyhand(self):
+        return len(self.cards) == 0
+
 
 
 
