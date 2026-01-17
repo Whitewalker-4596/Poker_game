@@ -8,3 +8,8 @@ command to run single test file in the tests folder:
 python -m unittest  <file path>
 python -m unittest  tests/test_card.py
 
+instansiated the objects required to run the game in main.py file 
+just run the game using the commented commands one by one in repl and play the game
+
+
+
