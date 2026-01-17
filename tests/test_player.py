@@ -15,9 +15,8 @@ class TestPlayer(unittest.TestCase):
         player = Player(name = "manu",hand = mock_hand)
         player.best_hand()
         self.assertEqual(
-            mock_hand.best_hand(),
+            player.best_hand(),
             "Straight Flush"
         )
         # mock_hand.best_rank.assert_called()
 
-        

@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch
 from poker.card import Card
 from poker.deck import Deck
 class TestDeck(unittest.TestCase):
@@ -11,4 +12,24 @@ class TestDeck(unittest.TestCase):
         deck = Deck()
         deck.add_cards([card1,card2])
         self.assertEqual(deck.cards, [card1,card2])
+    @patch('random.shuffle')
+    def test_gameplay_shuffels_the_deck(self,mock_shuffle):
+        cards = [
+            Card(rank = "2",suit = "Diamonds"),
+            Card(rank = "3",suit = "Clubs")
+        ]
+        deck = Deck()
+        deck.add_cards(cards = cards)
+        deck.shuffle_cards()
+        mock_shuffle.assert_called_once_with(cards)
+
+    def test_removes_n_number_of_cards(self):
+
+        ace = Card(rank = "Ace",suit = "Diamonds"),
+        king = Card(rank = "King",suit = "Clubs")
+        cards = [ace,king]
+        deck = Deck()
+        deck.add_cards(cards = cards)
+        self.assertEqual(deck.remove_cards(1),[ace])
+        self.assertEqual(deck.cards,[king])
 
