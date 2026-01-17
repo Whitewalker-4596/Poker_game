@@ -7,4 +7,6 @@ class GameRound():
         #give two cards to each player
         #ask fro wagers
         self.deck.shuffle()
-        pass
+        for player in self.players:
+            player.add_cards(self.deck.remove_cards(2))
+            

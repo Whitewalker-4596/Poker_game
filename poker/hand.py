@@ -1,11 +1,11 @@
 
 class Hand():
 
-    def __init__(self,cards):
-        copy = cards[:] #sorting without mutating recieved list
-        copy.sort()
-        self.cards = copy
-        
+    def __init__(self):
+        # copy = cards[:] #sorting without mutating recieved list
+        # copy.sort()
+        # self.cards = copy
+        self.cards = []
         self._rank_validations_from_best_to_worst = (
         ("Royal Flush",self._royalflush),
         ("Straight Flush",self._straightflush),
@@ -19,6 +19,12 @@ class Hand():
         ("High Card",self._high_Card),
         ("Empty Hand",self._emptyhand)
         )
+
+    def add_cards(self,cards):
+        copy = self.cards[:]
+        copy.extend(cards)
+        copy.sort()
+        self.cards = copy
 
     @property
     def _card_rank_counts(self):

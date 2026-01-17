@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock,call
 from poker.game_round import GameRound
 class TestGameRound(unittest.TestCase):
     def test_stores_deck_and_players(self):
@@ -22,3 +22,15 @@ class TestGameRound(unittest.TestCase):
         game_round = GameRound(deck = mock_deck, players = mock_players)
         game_round.play()
         mock_deck.shuffle.assert_called_once()
+    def test_deals_2_initial_cards_from_deck_to_each_player(self):
+        mock_deck = MagicMock()
+        mock_players = [
+            MagicMock(),
+            MagicMock()
+        ]
+        game_round = GameRound(deck = mock_deck, players = mock_players)
+        game_round.play()
+        mock_deck.remove_cards.assert_has_calls(
+            [call(2),call(2)]
+        )
+
