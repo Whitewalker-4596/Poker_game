@@ -27,5 +27,6 @@ class Card():
     def __eq__(self,another_card):
         return (self.rank == another_card.rank) and (self.suit == another_card.suit)
     def __gt__(self,another_card):
-        # return self.RANKS.index(self.rank) > self.RANKS.index(another_card.rank)
+        if self.rank == another_card.rank:
+            return self.suit > another_card.suit
         return self.rank_index > another_card.rank_index

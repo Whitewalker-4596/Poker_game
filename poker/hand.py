@@ -1,4 +1,11 @@
-
+from poker.validators import (
+    StraightValidator,
+    ThreeOfAKindValidator,
+    TwoPairValidator,
+    PairValidator,
+    HighCardValidator,
+    NoCardValidator
+)
 class Hand():
 
     def __init__(self):
@@ -12,12 +19,12 @@ class Hand():
         ("Four of a Kind",self._fourofakind),
         ("Full House",self._fullhouse),
         ("Flush",self._flush),
-        ("Straight",self._straight),
-        ("Three of a Kind",self._three_of_a_kind),
-        ("Two Pair",self._two_pair),
-        ("Pair",self._pair),
-        ("High Card",self._high_Card),
-        ("Empty Hand",self._emptyhand)
+        ("Straight",StraightValidator(cards=self.cards).is_valid),
+        ("Three of a Kind",ThreeOfAKindValidator(cards=self.cards).is_valid),
+        ("Two Pair",TwoPairValidator(cards=self.cards).is_valid),
+        ("Pair",PairValidator(cards=self.cards).is_valid),
+        ("High Card",HighCardValidator(cards = self.cards).is_valid),
+        ("Empty Hand",NoCardValidator(cards = self.cards).is_valid)
         )
     def __repr__(self):
         cards_as_strings = [str(card) for card in self.cards]
@@ -82,42 +89,19 @@ class Hand():
         return is_straight_flush and is_royal
             
     def _straightflush(self):
-        return self._straight() and self._flush()
+        return StraightValidator(cards=self.cards).is_valid() and self._flush()
             
     def _fourofakind(self):
         return self._count_rank_groups(group_size=4) == 1
     def _fullhouse(self):
-        return self._three_of_a_kind() and self._pair()
+        return ThreeOfAKindValidator(cards=self.cards).is_valid() and PairValidator(cards=self.cards).is_valid()
             
     def _flush(self):
         for suit_count in self._card_suit_counts.values():
             if suit_count >= 5:
                 return True
         return False
-    def _straight(self):
-        rank_indexes = list(set([card.rank_index for card in self.cards]))
-        for i in range(len(rank_indexes)-4):
-            is_straight = rank_indexes[i] + 4 == rank_indexes[i+4]
-            if is_straight:
-                return True
-            else:
-                continue
-        return False
 
-    def _three_of_a_kind(self):
-        return self._count_rank_groups(group_size = 3) == 1
-            
-    def _two_pair(self):
-        return self._count_rank_groups(group_size = 2) == 2
-            
-    def _pair(self):
-        return self._count_rank_groups(group_size = 2) == 1
-            
-    def _high_Card(self):
-        return len(self.cards) >= 2
-
-    def _emptyhand(self):
-        return len(self.cards) == 0
 
 
 

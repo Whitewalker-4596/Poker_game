@@ -46,6 +46,18 @@ class CardTest(unittest.TestCase):
             Card(rank = "2",suit = "Hearts"),
             Card(rank = "2",suit = "Hearts")
             )
+    def test_figures_to_sort_cards_with_same_rank(self):
+        self.assertEqual(
+            Card(rank = "2",suit = "Diamonds")<
+            Card(rank = "2",suit = "Hearts"),
+            True
+            )
+        self.assertEqual(
+            Card(rank = "2",suit = "Diamonds")<
+            Card(rank = "2",suit = "Clubs"),
+            False
+            )
+
     def test_created_cards_are_real_cards(self):
         cards = Card.create_standred_52_cards()
         for card in cards:

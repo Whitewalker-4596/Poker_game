@@ -10,10 +10,13 @@ class GameRound():
         self._shuffle_cards()
         self._deal_initial_two_cards_to_each_player()
         self._make_bets()
+
         self._deal_flop_cards()
         self._make_bets()
+
         self._deal_river_card()
         self._make_bets()
+        
         self._deal_turn_card()
         self._make_bets()
 
