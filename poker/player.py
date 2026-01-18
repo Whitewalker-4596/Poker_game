@@ -7,3 +7,6 @@ class Player():
         return self.hand.best_rank()
     def add_cards(self,cards):
         self.hand.add_cards(cards = cards)
+
+    def wants_to_fold(self):
+        return False
