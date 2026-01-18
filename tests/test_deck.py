@@ -6,6 +6,15 @@ class TestDeck(unittest.TestCase):
     def test_deck_initiated_with_no_cards(self):
         deck = Deck()
         self.assertEqual(deck.cards , [])
+    def test_len_function_on_deck_gives_no_of_cards_in_deck(self):
+        deck = Deck()
+        self.assertEqual(len(deck),0)
+        cards = [
+            Card(rank = "2",suit = "Diamonds"),
+            Card(rank = "3",suit = "Clubs")
+        ]
+        deck.add_cards(cards)
+        self.assertEqual(len(deck),2)
     def test_adds_cards_to_collection(self):
         card1 = Card(rank = "2",suit = "Diamonds")
         card2 = Card(rank = "3",suit = "Diamonds")

@@ -2,6 +2,7 @@ import unittest
 from unittest.mock import MagicMock,call
 from poker.game_round import GameRound
 from poker.card import Card
+from poker.hand import Hand
 # from poker.player import Player
 class TestGameRound(unittest.TestCase):
     def test_stores_deck_and_players(self):
@@ -23,8 +24,8 @@ class TestGameRound(unittest.TestCase):
         ]
         game_round = GameRound(deck = mock_deck, players = mock_players)
         game_round.play()
-        mock_deck.shuffle.assert_called_once()
-        
+        mock_deck.shuffle_cards.assert_called_once()
+
     def test_deals_2_initial_cards_from_deck_to_each_player(self):
         first_two_cards = [
             Card("3","Hearts"),
