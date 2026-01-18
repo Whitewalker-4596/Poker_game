@@ -2,11 +2,7 @@ class GameRound():
     def __init__(self,deck,players):
         self.deck = deck
         self.players = players
-        self.community_rounds = {
-            "flop" : 3,
-            "river" : 1,
-            "turn" : 1
-        }
+
     def play(self):
         #shuffle the deck
         #give two cards to each player
@@ -14,14 +10,11 @@ class GameRound():
         self._shuffle_cards()
         self._deal_initial_two_cards_to_each_player()
         self._make_bets()
-        # self._deal_flop_cards()
-        self._deal_community_cards(self.community_rounds["flop"])
+        self._deal_flop_cards()
         self._make_bets()
-        self._deal_community_cards(self.community_rounds["river"])
-        # self._deal_river_card()
+        self._deal_river_card()
         self._make_bets()
-        self._deal_community_cards(self.community_rounds["turn"])
-        # self._deal_turn_card()
+        self._deal_turn_card()
         self._make_bets()
 
 
@@ -43,20 +36,14 @@ class GameRound():
         for player in self.players:
             player.add_cards(community_cards)
 
-    # def _deal_flop_cards(self):
-    #     flop_cards = self.deck.remove_cards(3)
-    #     for player in self.players:
-    #         player.add_cards(flop_cards)
+    def _deal_flop_cards(self):
+        self._deal_community_cards(3)
             
-    # def _deal_river_card(self):
-    #     river_card = self.deck.remove_cards(1)
-    #     for player in self.players:
-    #         player.add_cards(river_card)
+    def _deal_river_card(self):
+        self._deal_community_cards(1)
 
-    # def _deal_turn_card(self):
-    #     turn_card = self.deck.remove_cards(1)
-    #     for player in self.players:
-    #         player.add_cards(turn_card)
+    def _deal_turn_card(self):
+        self._deal_community_cards(1)
 
 
             
