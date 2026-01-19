@@ -40,6 +40,7 @@ class TestHand(unittest.TestCase):
         three_of_hearts = Card(rank = "3",suit = "Hearts")
 
         cards = [
+            three_of_hearts,
             ace_of_diamonds,
             ace_of_hearts
         ]
@@ -47,7 +48,7 @@ class TestHand(unittest.TestCase):
         hand.add_cards(cards = cards)
         self.assertEqual(
             hand.best_rank(),
-            "Pair"
+            (0,"Pair",[ace_of_diamonds,ace_of_hearts])
         )
 
 

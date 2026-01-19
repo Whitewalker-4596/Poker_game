@@ -19,10 +19,19 @@ game_round.play()
 # card2 = Card("6","Diamonds")
 # from main import deck ,cards, hand1, hand2, player1, player2, game_round
 
+for player in players:
+    print(f"{player.name} recieves a {player.hand}")
+    index,hand_name,hand_cards = player.best_hand()
+    hand_card_strings = [str(card) for card in hand_cards]
+    hand_card_string = " and ".join(hand_card_strings)
+    print(f"{player.name} has a {hand_name} with a {hand_card_string}")
 
-print(player1.hand)
-print(player2.hand)
-print(player1.best_hand())
-print(player2.best_hand())
+winning_player = max(player1,player2)
+print(f"the winning player is {winning_player}")
+
+# print(player1.hand)
+# print(player2.hand)
+# print(player1.best_hand())
+# print(player2.best_hand())
 
 

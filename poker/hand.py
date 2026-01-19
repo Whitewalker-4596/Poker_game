@@ -39,10 +39,10 @@ class Hand():
         self.cards = copy
 
     def best_rank(self):
-        for klass in self.VALIDATORS:
+        for index,klass in enumerate(self.VALIDATORS):
             validator = klass(cards = self.cards)
             if validator.is_valid():
-                return validator.name
+                return (index,validator.name,validator.best_cards())
 
 
             

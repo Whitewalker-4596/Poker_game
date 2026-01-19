@@ -29,3 +29,20 @@ class TestPlayer(unittest.TestCase):
         ]
         player1.add_cards(cards = cards)
         mock_hand.add_cards.asssert_calls_once_with(cards)
+
+    def test_figures_the_best_player(self):
+        hand1 = MagicMock()
+        hand2 = MagicMock()
+
+        hand1.best_rank.return_value = (2,"Four Of A Kind",[])
+        hand2.best_rank.return_value = (6,"Three Of A Kind",[])
+
+        player1 = Player(name = "manu",hand = hand1)
+        player2 = Player(name = "priya",hand = hand2)
+
+        players = [player1,player2]
+
+        self.assertEqual(
+            max(players),
+            player1
+        )
