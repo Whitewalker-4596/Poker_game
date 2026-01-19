@@ -23,3 +23,28 @@ class RankValidator():
             card_rank_counts.setdefault(card.rank,0)
             card_rank_counts[card.rank] +=1
         return card_rank_counts
+        
+    @property
+    def _count_suit_groups(self):
+        return {
+            suit:suit_count 
+            for suit,suit_count in self._card_suit_counts.items()
+            if suit_count >= 5
+        }
+
+    @property
+    def _card_suit_counts(self):
+        """
+        gives dict like in return from a set of given cards 
+        for example if given 5 cards:
+        {
+        "Spades" : 2,
+        "Diamonds" : 1,
+        "Clubs" : 2
+        }
+        """
+        card_suit_counts = {}
+        for card in self.cards:
+            card_suit_counts.setdefault(card.suit,0)
+            card_suit_counts[card.suit] +=1
+        return card_suit_counts

@@ -1,5 +1,9 @@
 here i am going to build poker game using python Test driven development 
 
+TODO:
+add edge cases in three of a kind
+add edge case in straight and straigh fulse when there is pair included.
+
 command to run all tests in the tests folder:
 python -m unittest discover <folder name>
 python -m unittest discover tests

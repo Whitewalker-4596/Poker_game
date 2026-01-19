@@ -11,4 +11,4 @@ class PairValidator(RankValidator):
     def best_cards(self):
         rank_with_pairs = self._count_rank_groups(group_size = 2)
         cards = [card for card in self.cards if card.rank in rank_with_pairs]
-        return card
+        return cards

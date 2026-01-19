@@ -24,7 +24,17 @@ class TestStraightValidator(unittest.TestCase):
             validator.is_valid(),
             True
             )
-    
+    def test_does_not_say_2_cards_is_straight(self):
+        cards = [
+            self.seven,
+            self.eight
+        ]
+        validator = StraightValidator(cards = cards)
+        self.assertEqual(
+            validator.is_valid(),
+            False
+            )
+
     def returns_straight_cards_from_card_collection(self):
         validator = ThreeOfAKindValidator(cards = self.cards)
         self.assertEqual(

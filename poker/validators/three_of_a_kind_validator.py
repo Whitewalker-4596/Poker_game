@@ -9,6 +9,6 @@ class ThreeOfAKindValidator(RankValidator):
         return len(rank_with_pairs) == 1
 
     def best_cards(self):
-        rank_with_pairs = self._count_rank_groups(group_size = 3)
-        cards = [card for card in self.cards if card.rank in rank_with_pairs]
-        return card
+        rank_with_3_cards = self._count_rank_groups(group_size = 3)
+        cards = [card for card in self.cards if card.rank in rank_with_3_cards]
+        return cards
